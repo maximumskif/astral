@@ -61,11 +61,26 @@
    "ATOM",
    "NEAR",
    "AAVE"
+  ],
+  "c13": [
+   "BTC",
+   "ETH",
+   "SOL",
+   "LINK",
+   "AVAX",
+   "DOGE",
+   "XRP",
+   "ADA",
+   "LTC",
+   "DOT",
+   "UNI",
+   "NEAR",
+   "AAVE"
   ]
  },
  "strategies": {
   "HV-G2": {
-   "status": "live",
+   "status": "retired",
    "accounts": [
     "Paper try 1 (saved 5927)",
     "Paper2 (saved 5928)"
@@ -85,7 +100,8 @@
    "tp_atr": 0.5,
    "sl_atr": 1.5,
    "backtest": "HV-G (6.5%/coin) 2026-09-18..28: 8,607 trades (~33/hr), 60.2% WR, +1.6%, DD -1.2%",
-   "live": "HV-G at 6.5%: 92 trades per account, 68-70% WR, +$13 (10k acct) / +$124 (100k acct), ~29/hr"
+   "live": "final: Paper2 399 trades 72% +$1,346; Paper try 1 394 trades 71% +$118",
+   "reason": "thin-coin feeds (BCH, ATOM) repeatedly paused whole strategy; live 399 trades 72% WR +$1,346 (Paper2) / 394 71% +$118 (try1) in ~9.5h"
   },
   "HV-E2": {
    "status": "live",
@@ -410,7 +426,7 @@
    "backtest": "@5+5bps 2026-05-15..09-28: 78 trades 66.7% WR +2.2% DD -2.4%; holdout 2026-01-01..05-15: 100 trades 47% WR -6.8%"
   },
   "HV-F4": {
-   "status": "live",
+   "status": "retired",
    "accounts": [
     "Paper5 (saved 5935)"
    ],
@@ -430,7 +446,54 @@
    "tp_atr": 0.5,
    "sl_atr": 2.0,
    "backtest": "same as HV-F3 minus BCH",
-   "live": "deployed 2026-09-30 after BCH feed blocked HV-F3 warmup"
+   "live": "52 trades 83% WR +$149 in ~2.7h (~15/hr)",
+   "reason": "ATOM feed timeout stalled it"
+  },
+  "HV-G3": {
+   "status": "live",
+   "accounts": [
+    "Paper try 1 (saved 5937)",
+    "Paper2 (saved 5938)"
+   ],
+   "family": "rsi2",
+   "bar": "1m",
+   "coins": "c13",
+   "size": 0.1,
+   "entry": {
+    "ema": 50,
+    "rsi2_below": 20
+   },
+   "exit": {
+    "rsi2_above": 60,
+    "max_bars": 2
+   },
+   "tp_atr": 0.5,
+   "sl_atr": 1.5,
+   "backtest": "HV-G2 minus BCH/ATOM",
+   "live": "deployed 2026-09-30 ~14:55 after ATOMUSD feed timeout stalled HV-G2 75+ min"
+  },
+  "HV-F5": {
+   "status": "live",
+   "accounts": [
+    "Paper5 (saved 5939)"
+   ],
+   "family": "bollinger",
+   "bar": "1m",
+   "coins": "c13",
+   "size": 0.065,
+   "entry": {
+    "ema": 100,
+    "bb_len": 20,
+    "bb_sd": 1.5
+   },
+   "exit": {
+    "bb_mid": true,
+    "max_bars": 5
+   },
+   "tp_atr": 0.5,
+   "sl_atr": 2.0,
+   "backtest": "HV-F4 minus ATOM",
+   "live": "deployed 2026-09-30 ~14:55 after ATOM stall"
   }
  }
 }
