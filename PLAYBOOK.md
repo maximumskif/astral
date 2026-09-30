@@ -2,7 +2,7 @@
 
 **Purpose:** one place to see which strategy ideas worked, which failed, and why, so new strategies can build on proven pieces instead of re-testing dead ends.
 **Detailed trade-by-trade history:** `astral-paper-log.md` (this file is the summary).
-**Last updated:** 2026-09-30 15:00 UTC
+**Last updated:** 2026-09-30 16:45 UTC
 
 ---
 
@@ -57,10 +57,14 @@
 
 | Account | Saved ID | Strategy | Size/coin |
 |---|---|---|---|
-| Paper try 1 ($10k) | 5937 | HV-G3 1m RSI2 13 coins (no BCH/ATOM) | 10% |
-| Paper2 ($100k) | 5938 | HV-G3 1m RSI2 13 coins (no BCH/ATOM) | 10% |
-| Paper3 ($100k) | 5912 | HV-D 5m MR 4 coins | 23.75% |
-| Paper4 ($100k) | 5926 | HV-E2 1m RSI2 10 coins | 18% |
-| Paper5 ($100k) | 5939 | HV-F5 1m Bollinger 1.5sd 13 coins (no BCH/ATOM) | 6.5% |
+| Paper try 1 ($10k) | 5948 | HV-G4 1m RSI2 13 coins | 12.5% |
+| Paper2 ($100k) | 5949 | HV-G4 1m RSI2 13 coins | 12.5% |
+| Paper3 ($100k) | 5952 | HV-D2 5m MR 4 coins | 29.7% |
+| Paper4 ($100k) | 5950 | HV-E3 1m RSI2 10 coins | 22.5% |
+| Paper5 ($100k) | 5951 | HV-F6 1m Bollinger 1.5sd 13 coins | 8.1% |
+
+Sizes raised x1.25 on 2026-09-30 ~16:45 UTC (user request). Total exposure can now exceed 100% of equity when many coins signal at once — extra orders may be rejected for insufficient cash; watch for that.
+
+**Where the paper trades "execute":** nowhere real. Astral Paper is an internal simulator: fills are at the close of the signal candle (or the TP/SL price) using Astral's *consolidated* USD crypto price feed (`crypto_market_scope: consolidated`, venue "SMART"), with zero fees/slippage. No exchange receives orders. Going live would route through a connected broker account (none connected yet).
 
 **Replacement rule:** after 15+ closed live trades, replace a strategy if win rate < 55%, P&L < −3%, or (1-min strategies) < 5 trades/hour. Record the result in the tables above.

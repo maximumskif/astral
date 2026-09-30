@@ -104,7 +104,7 @@
    "reason": "thin-coin feeds (BCH, ATOM) repeatedly paused whole strategy; live 399 trades 72% WR +$1,346 (Paper2) / 394 71% +$118 (try1) in ~9.5h"
   },
   "HV-E2": {
-   "status": "live",
+   "status": "superseded",
    "accounts": [
     "Paper4 (saved 5926)"
    ],
@@ -123,7 +123,8 @@
    "tp_atr": 0.6,
    "sl_atr": 1.5,
    "backtest": "HV-E (9.5%/coin) 2026-09-02..28: 5,078 trades (~7.8/hr), 62.0% WR, +5.7%, DD -1.1%",
-   "live": "HV-E at 9.5%: 30 trades, 80% WR, +$177, ~6.6/hr"
+   "live": "100 trades, 77% WR, +$753 (18%/coin, ~12h)",
+   "note": "resized x1.25 -> HV-E3"
   },
   "HV-F3": {
    "status": "retired",
@@ -191,7 +192,7 @@
    "backtest": "1,487 trades (~2.3/hr), 65.0% WR, +1.8%"
   },
   "HV-D": {
-   "status": "live",
+   "status": "superseded",
    "accounts": [
     "Paper3 (saved 5912)"
    ],
@@ -212,7 +213,8 @@
    "tp_atr": 1.0,
    "sl_atr": 1.5,
    "backtest": "2026-05-15..09-28: 856 trades, 67.2% WR, +13.8%, DD -1.9%",
-   "live": "3 trades, 100% WR, +$257 (<1 trade/hr)"
+   "live": "5 trades, 80% WR, +$55 net (+$257 before one SOL loss)",
+   "note": "resized x1.25 -> HV-D2"
   },
   "HV-A": {
    "status": "retired",
@@ -450,7 +452,7 @@
    "reason": "ATOM feed timeout stalled it"
   },
   "HV-G3": {
-   "status": "live",
+   "status": "superseded",
    "accounts": [
     "Paper try 1 (saved 5937)",
     "Paper2 (saved 5938)"
@@ -470,10 +472,11 @@
    "tp_atr": 0.5,
    "sl_atr": 1.5,
    "backtest": "HV-G2 minus BCH/ATOM",
-   "live": "deployed 2026-09-30 ~14:55 after ATOMUSD feed timeout stalled HV-G2 75+ min"
+   "live": "~75 min: 56/54 trades, 87-89% WR, +$37 / +$376",
+   "note": "resized x1.25 -> HV-G4"
   },
   "HV-F5": {
-   "status": "live",
+   "status": "superseded",
    "accounts": [
     "Paper5 (saved 5939)"
    ],
@@ -493,7 +496,100 @@
    "tp_atr": 0.5,
    "sl_atr": 2.0,
    "backtest": "HV-F4 minus ATOM",
-   "live": "deployed 2026-09-30 ~14:55 after ATOM stall"
+   "live": "deployed 2026-09-30 ~14:55 after ATOM stall",
+   "note": "resized x1.25 -> HV-F6"
+  },
+  "HV-G4": {
+   "status": "live",
+   "accounts": [
+    "Paper try 1 (saved 5948)",
+    "Paper2 (saved 5949)"
+   ],
+   "family": "rsi2",
+   "bar": "1m",
+   "coins": "c13",
+   "size": 0.125,
+   "entry": {
+    "ema": 50,
+    "rsi2_below": 20
+   },
+   "exit": {
+    "rsi2_above": 60,
+    "max_bars": 2
+   },
+   "tp_atr": 0.5,
+   "sl_atr": 1.5,
+   "backtest": "HV-G3 logic, size x1.25 per user 2026-09-30",
+   "live": "deployed 2026-09-30 ~16:40"
+  },
+  "HV-E3": {
+   "status": "live",
+   "accounts": [
+    "Paper4 (saved 5950)"
+   ],
+   "family": "rsi2",
+   "bar": "1m",
+   "coins": "c10",
+   "size": 0.225,
+   "entry": {
+    "ema": 50,
+    "rsi2_below": 10
+   },
+   "exit": {
+    "rsi2_above": 70,
+    "max_bars": 3
+   },
+   "tp_atr": 0.6,
+   "sl_atr": 1.5,
+   "backtest": "HV-E2 logic, size x1.25 per user 2026-09-30",
+   "live": "deployed 2026-09-30 ~16:40"
+  },
+  "HV-F6": {
+   "status": "live",
+   "accounts": [
+    "Paper5 (saved 5951)"
+   ],
+   "family": "bollinger",
+   "bar": "1m",
+   "coins": "c13",
+   "size": 0.08125,
+   "entry": {
+    "ema": 100,
+    "bb_len": 20,
+    "bb_sd": 1.5
+   },
+   "exit": {
+    "bb_mid": true,
+    "max_bars": 5
+   },
+   "tp_atr": 0.5,
+   "sl_atr": 2.0,
+   "backtest": "HV-F5 logic, size x1.25 per user 2026-09-30",
+   "live": "deployed 2026-09-30 ~16:40"
+  },
+  "HV-D2": {
+   "status": "live",
+   "accounts": [
+    "Paper3 (saved 5952)"
+   ],
+   "family": "meanrev_bb_rsi",
+   "bar": "5m",
+   "coins": "c4_vol",
+   "size": 0.296875,
+   "entry": {
+    "ema": 200,
+    "bb_len": 20,
+    "bb_sd": 2.0,
+    "rsi2_below": 10
+   },
+   "exit": {
+    "bb_mid": true,
+    "max_bars": 12
+   },
+   "tp_atr": 1.0,
+   "sl_atr": 1.5,
+   "backtest": "HV-D logic, size x1.25 per user 2026-09-30",
+   "live": "deployed 2026-09-30 ~16:40"
   }
  }
 }
