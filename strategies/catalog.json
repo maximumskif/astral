@@ -76,6 +76,19 @@
    "UNI",
    "NEAR",
    "AAVE"
+  ],
+  "c11": [
+   "BTC",
+   "ETH",
+   "SOL",
+   "LINK",
+   "AVAX",
+   "DOGE",
+   "XRP",
+   "LTC",
+   "DOT",
+   "NEAR",
+   "AAVE"
   ]
  },
  "strategies": {
@@ -590,6 +603,27 @@
    "sl_atr": 1.5,
    "backtest": "HV-D logic, size x1.25 per user 2026-09-30",
    "live": "deployed 2026-09-30 ~16:40"
+  },
+  "HV-G5-test": {
+   "status": "working (not live)",
+   "accounts": [],
+   "family": "rsi2",
+   "bar": "1m",
+   "coins": "c11",
+   "size": 0.125,
+   "entry": {
+    "ema": 50,
+    "rsi2_below": 20
+   },
+   "exit": {
+    "rsi2_above": 60,
+    "max_bars": 1
+   },
+   "tp_atr": 0.5,
+   "sl_atr": 1.5,
+   "backtest": "2026-09-20..30 zero-cost: 6,009 trades (~25/hr), 60.8% WR, +3.71%, DD -1.33%, PF 1.09 | same window HV-G4: 6,639 tr, 59.1% WR, +0.35%, DD -2.61%, PF 1.01",
+   "live": "",
+   "note": "ideas from live-trade review 2026-09-30: exit after 1 bar if no bounce (trades held 3+ min win only 28-51%); drop UNI (-1.5 bps/trade) and ADA (+0.9)"
   }
  }
 }
