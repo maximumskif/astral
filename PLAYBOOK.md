@@ -2,7 +2,7 @@
 
 **Purpose:** one place to see which strategy ideas worked, which failed, and why, so new strategies can build on proven pieces instead of re-testing dead ends.
 **Detailed trade-by-trade history:** `astral-paper-log.md` (this file is the summary).
-**Last updated:** 2026-09-30 17:15 UTC
+**Last updated:** 2026-09-30 20:50 UTC
 
 ---
 
@@ -41,6 +41,12 @@
 | **v5 quick TP (1h)** | TP +0.75 ATR | 71–73% WR but ~1/3 the profit of v2 | Higher hit rate ≠ more money; exits winners too early |
 | **15-min/30-min mean reversion** (real costs) | SOL MR at 15m, 30m | 54–59% WR, −6% to −16% after costs | Costs still too big vs. move size below 1h |
 | **Cost-aware filters on 1m/5m** (from hmmm-zip review, 2026-09-30) | HV-G2 + ATR%>0.25% floor; HV-D + "BB-mid ≥0.6% / ≥1% away" edge floor, no TP | 1m: 24% WR −30% (baseline −79%). 5m edge≥1%: +2.2% May–Sep **but −6.8% on Jan–May holdout** | Filters cut losses a lot but no 1m/5m variant survives 0.2% round-trip costs out-of-sample. **Always check an untouched earlier period before deploying.** |
+
+---
+
+## ⏸️ Break checkpoint (2026-09-30 ~20:50 UTC)
+All 5 strategies left running on Astral Paper. A/B so far (fee-free): HV-G4 (Paper try 1) 70 tr, 70% WR, -0.009%/trade; HV-G5 fast-exit (Paper2) 37 tr, 54% WR, -0.019%/trade — G5 NOT confirming its backtest yet. HV-F6 (Paper5) 35 tr 86% +$175 is the best live performer at 1.25x.
+**Next steps when resuming:** (1) finish A/B at 50+ trades each; if G5 still trails, revert Paper2 to HV-G4. (2) Consider moving the weakest account to HV-F6-style Bollinger. (3) Remember: every 1m/5m strategy loses after real fees (~5+ bps round trip); only MR1h-v2 survived costs in backtests — required before any real money.
 
 ---
 

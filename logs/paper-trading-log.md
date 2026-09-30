@@ -76,3 +76,11 @@ Lesson: HV-C 5m trend pullback = 1,990 trades but 58% WR, −20% even gross → 
 | 2026-09-30T16:44Z | User: +25% position size. All accounts flat -> swapped: try1 5937->5948 HV-G4 12.5%, P2 5938->5949 HV-G4 12.5%, P4 5926->5950 HV-E3 22.5%, P5 5939->5951 HV-F6 8.125%, P3 5912->5952 HV-D2 29.7% | swap |
 | 2026-09-30T16:50Z | 1.25x sizes live: HV-G4 5948 n3 +$2, 5949 n3 +$25; HV-E3 5950 n1 +$29; HV-F6 5951 / HV-D2 5952 warming up | auto check-in |
 | 2026-09-30T17:15Z | A/B started: Paper2 5949 HV-G4 -> 5953 HV-G5 (fast-exit, 11 coins). HV-G4 5949 final (1.25x): see th.csv | swap |
+| 2026-09-30T17:44Z | quiet market since ~17:15 (few signals). see summ | auto check-in |
+| 2026-09-30T18:15Z | very quiet market 17:15-18:15 (G4 +3 tr, G5 +1, F6 0 since 17:27; feeds OK since G4 on same coins traded 17:53) | auto check-in |
+| 2026-09-30T18:45Z | still quiet; F6 no trades since 17:27 but G4 trading same coins (feeds OK, EMA100 filter blocking in dip) | auto check-in |
+| 2026-09-30T19:15Z | quiet evening market, see summ (G4/F6/G5 few trades) | auto check-in |
+| 2026-09-30T19:45Z | activity picking up; see summ | auto check-in |
+| 2026-09-30T20:14Z | quiet; see summ | auto check-in |
+| 2026-09-30T20:44Z | activity up; see summ | auto check-in |
+| 2026-09-30T20:58Z | BREAK: user pausing. All 5 strategies left running on Astral. A/B G5 37tr 54% vs G4 70tr 70%. | note |
