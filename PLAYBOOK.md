@@ -48,6 +48,7 @@
 - **Zero fees and zero slippage.** Fills happen exactly at the candle close / TP price. Paper P&L therefore matches the *no-cost* backtests and **overstates what a real exchange would give** (≈0.1–0.2% per round trip would erase most 1-min/5-min edges).
 - Astral strategies are **long-only**, **percent-of-equity sizing only**, **no multi-timeframe** (approximate higher timeframes with longer EMAs), fills on signal-bar close.
 - **Backtest limits:** 40,000 bars per run; 15-coin 1-min backtests **time out after 27 days** → use ≤10-day windows. Max 2 concurrent backtests.
+- **Avoid BCHUSD on 1-min**: its feed times out (sparse bars) → a deployment can sit in warm-up forever (HV-F3 made 0 trades in 7h) and it periodically pauses HV-G2. Check `runtime_health`/`source_failed_symbols` in deployments_list when a strategy is silent.
 - Undeploying does **not** close open positions — swap strategies only when the account is flat.
 
 ---
@@ -60,6 +61,6 @@
 | Paper2 ($100k) | 5928 | HV-G2 1m RSI2 15 coins | 10% |
 | Paper3 ($100k) | 5912 | HV-D 5m MR 4 coins | 23.75% |
 | Paper4 ($100k) | 5926 | HV-E2 1m RSI2 10 coins | 18% |
-| Paper5 ($100k) | 5925 | HV-F3 1m Bollinger 1.5sd 15 coins | 6.5% |
+| Paper5 ($100k) | 5935 | HV-F4 1m Bollinger 1.5sd 14 coins (no BCH) | 6.5% |
 
 **Replacement rule:** after 15+ closed live trades, replace a strategy if win rate < 55%, P&L < −3%, or (1-min strategies) < 5 trades/hour. Record the result in the tables above.

@@ -45,6 +45,22 @@
   "c2": [
    "SOL",
    "LINK"
+  ],
+  "c14": [
+   "BTC",
+   "ETH",
+   "SOL",
+   "LINK",
+   "AVAX",
+   "DOGE",
+   "XRP",
+   "ADA",
+   "LTC",
+   "DOT",
+   "UNI",
+   "ATOM",
+   "NEAR",
+   "AAVE"
   ]
  },
  "strategies": {
@@ -94,7 +110,7 @@
    "live": "HV-E at 9.5%: 30 trades, 80% WR, +$177, ~6.6/hr"
   },
   "HV-F3": {
-   "status": "live",
+   "status": "retired",
    "accounts": [
     "Paper5 (saved 5925)"
    ],
@@ -114,7 +130,8 @@
    "tp_atr": 0.5,
    "sl_atr": 2.0,
    "backtest": "2026-09-18..28: 2,519 trades (~9.5/hr), 66.7% WR, +0.02% (flat)",
-   "live": "just started"
+   "live": "just started",
+   "reason": "never traded live: BCHUSD 1m feed kept timing out, warmup stuck (fixed in HV-F4 = no BCH)"
   },
   "HV-F2": {
    "status": "retired",
@@ -391,6 +408,29 @@
    "sl_atr": 2.5,
    "tp": "none",
    "backtest": "@5+5bps 2026-05-15..09-28: 78 trades 66.7% WR +2.2% DD -2.4%; holdout 2026-01-01..05-15: 100 trades 47% WR -6.8%"
+  },
+  "HV-F4": {
+   "status": "live",
+   "accounts": [
+    "Paper5 (saved 5935)"
+   ],
+   "family": "bollinger",
+   "bar": "1m",
+   "coins": "c14",
+   "size": 0.065,
+   "entry": {
+    "ema": 100,
+    "bb_len": 20,
+    "bb_sd": 1.5
+   },
+   "exit": {
+    "bb_mid": true,
+    "max_bars": 5
+   },
+   "tp_atr": 0.5,
+   "sl_atr": 2.0,
+   "backtest": "same as HV-F3 minus BCH",
+   "live": "deployed 2026-09-30 after BCH feed blocked HV-F3 warmup"
   }
  }
 }
