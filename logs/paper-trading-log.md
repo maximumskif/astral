@@ -74,3 +74,5 @@ Lesson: HV-C 5m trend pullback = 1,990 trades but 58% WR, −20% even gross → 
 | 2026-09-30T15:50Z | HV-G3 5937 n21 95% +$17, 5938 n21 95% +$168 (24/hr); HV-E2 5926 resumed n88 74% +$561; HV-D 5912 n5 80% +$55; HV-F5 5939 warming up | auto check-in |
 | 2026-09-30T16:20Z | HV-G3 5937 n56 89% +$37, 5938 n54 87% +$376 (~40/hr); HV-E2 5926 n100 77% +$753; HV-D 5912 n5 80% +$55; HV-F5 5939 live, first trade +$10 | auto check-in |
 | 2026-09-30T16:44Z | User: +25% position size. All accounts flat -> swapped: try1 5937->5948 HV-G4 12.5%, P2 5938->5949 HV-G4 12.5%, P4 5926->5950 HV-E3 22.5%, P5 5939->5951 HV-F6 8.125%, P3 5912->5952 HV-D2 29.7% | swap |
+| 2026-09-30T16:50Z | 1.25x sizes live: HV-G4 5948 n3 +$2, 5949 n3 +$25; HV-E3 5950 n1 +$29; HV-F6 5951 / HV-D2 5952 warming up | auto check-in |
+| 2026-09-30T17:15Z | A/B started: Paper2 5949 HV-G4 -> 5953 HV-G5 (fast-exit, 11 coins). HV-G4 5949 final (1.25x): see th.csv | swap |

@@ -2,7 +2,7 @@
 
 **Purpose:** one place to see which strategy ideas worked, which failed, and why, so new strategies can build on proven pieces instead of re-testing dead ends.
 **Detailed trade-by-trade history:** `astral-paper-log.md` (this file is the summary).
-**Last updated:** 2026-09-30 16:45 UTC
+**Last updated:** 2026-09-30 17:15 UTC
 
 ---
 
@@ -58,7 +58,7 @@
 | Account | Saved ID | Strategy | Size/coin |
 |---|---|---|---|
 | Paper try 1 ($10k) | 5948 | HV-G4 1m RSI2 13 coins | 12.5% |
-| Paper2 ($100k) | 5949 | HV-G4 1m RSI2 13 coins | 12.5% |
+| Paper2 ($100k) | 5953 | **HV-G5** 1m RSI2 fast-exit (1 bar) 11 coins — A/B vs HV-G4 on Paper try 1 | 12.5% |
 | Paper3 ($100k) | 5952 | HV-D2 5m MR 4 coins | 29.7% |
 | Paper4 ($100k) | 5950 | HV-E3 1m RSI2 10 coins | 22.5% |
 | Paper5 ($100k) | 5951 | HV-F6 1m Bollinger 1.5sd 13 coins | 8.1% |
