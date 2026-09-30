@@ -1,0 +1,314 @@
+{
+ "bar_size": "5m",
+ "assets": [
+  {
+   "symbol": "SOLUSD",
+   "type": "crypto"
+  },
+  {
+   "symbol": "LINKUSD",
+   "type": "crypto"
+  },
+  {
+   "symbol": "AVAXUSD",
+   "type": "crypto"
+  },
+  {
+   "symbol": "DOGEUSD",
+   "type": "crypto"
+  }
+ ],
+ "series": [
+  {
+   "alias": "SOL_A",
+   "expr": "ATR(SOLUSD.high, SOLUSD.low, SOLUSD.close, 14)"
+  },
+  {
+   "alias": "SOL_E",
+   "expr": "EMA(SOLUSD.close, 200)"
+  },
+  {
+   "alias": "SOL_R",
+   "expr": "RSI(SOLUSD.close, 2)"
+  },
+  {
+   "alias": "SOL_L",
+   "expr": "BB_LOWER(SOLUSD.close, 20, 2.0)"
+  },
+  {
+   "alias": "SOL_M",
+   "expr": "BB_MIDDLE(SOLUSD.close, 20, 2)"
+  },
+  {
+   "alias": "SOL_N",
+   "expr": "SOLUSD.close > SOL_E and SOL_R < 10 and SOLUSD.close < SOL_L"
+  },
+  {
+   "alias": "LINK_A",
+   "expr": "ATR(LINKUSD.high, LINKUSD.low, LINKUSD.close, 14)"
+  },
+  {
+   "alias": "LINK_E",
+   "expr": "EMA(LINKUSD.close, 200)"
+  },
+  {
+   "alias": "LINK_R",
+   "expr": "RSI(LINKUSD.close, 2)"
+  },
+  {
+   "alias": "LINK_L",
+   "expr": "BB_LOWER(LINKUSD.close, 20, 2.0)"
+  },
+  {
+   "alias": "LINK_M",
+   "expr": "BB_MIDDLE(LINKUSD.close, 20, 2)"
+  },
+  {
+   "alias": "LINK_N",
+   "expr": "LINKUSD.close > LINK_E and LINK_R < 10 and LINKUSD.close < LINK_L"
+  },
+  {
+   "alias": "AVAX_A",
+   "expr": "ATR(AVAXUSD.high, AVAXUSD.low, AVAXUSD.close, 14)"
+  },
+  {
+   "alias": "AVAX_E",
+   "expr": "EMA(AVAXUSD.close, 200)"
+  },
+  {
+   "alias": "AVAX_R",
+   "expr": "RSI(AVAXUSD.close, 2)"
+  },
+  {
+   "alias": "AVAX_L",
+   "expr": "BB_LOWER(AVAXUSD.close, 20, 2.0)"
+  },
+  {
+   "alias": "AVAX_M",
+   "expr": "BB_MIDDLE(AVAXUSD.close, 20, 2)"
+  },
+  {
+   "alias": "AVAX_N",
+   "expr": "AVAXUSD.close > AVAX_E and AVAX_R < 10 and AVAXUSD.close < AVAX_L"
+  },
+  {
+   "alias": "DOGE_A",
+   "expr": "ATR(DOGEUSD.high, DOGEUSD.low, DOGEUSD.close, 14)"
+  },
+  {
+   "alias": "DOGE_E",
+   "expr": "EMA(DOGEUSD.close, 200)"
+  },
+  {
+   "alias": "DOGE_R",
+   "expr": "RSI(DOGEUSD.close, 2)"
+  },
+  {
+   "alias": "DOGE_L",
+   "expr": "BB_LOWER(DOGEUSD.close, 20, 2.0)"
+  },
+  {
+   "alias": "DOGE_M",
+   "expr": "BB_MIDDLE(DOGEUSD.close, 20, 2)"
+  },
+  {
+   "alias": "DOGE_N",
+   "expr": "DOGEUSD.close > DOGE_E and DOGE_R < 10 and DOGEUSD.close < DOGE_L"
+  }
+ ],
+ "signals": [
+  {
+   "name": "SOL_IN",
+   "expr": "SOL_N"
+  },
+  {
+   "name": "SOL_OUT",
+   "expr": "SOLUSD.close >= SOL_M or BARS_SINCE(SOL_N) == 12"
+  },
+  {
+   "name": "LINK_IN",
+   "expr": "LINK_N"
+  },
+  {
+   "name": "LINK_OUT",
+   "expr": "LINKUSD.close >= LINK_M or BARS_SINCE(LINK_N) == 12"
+  },
+  {
+   "name": "AVAX_IN",
+   "expr": "AVAX_N"
+  },
+  {
+   "name": "AVAX_OUT",
+   "expr": "AVAXUSD.close >= AVAX_M or BARS_SINCE(AVAX_N) == 12"
+  },
+  {
+   "name": "DOGE_IN",
+   "expr": "DOGE_N"
+  },
+  {
+   "name": "DOGE_OUT",
+   "expr": "DOGEUSD.close >= DOGE_M or BARS_SINCE(DOGE_N) == 12"
+  }
+ ],
+ "orders": [
+  {
+   "name": "B_SOL",
+   "asset": "SOLUSD",
+   "side": "buy",
+   "accumulate": false,
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 0.2375,
+   "protection": {
+    "protection": "tp_oco_sl",
+    "evaluation": "on_entry_fill",
+    "stop_loss": {
+     "expr": "ENTRY_PRICE - 1.5 * SOL_A"
+    },
+    "take_profit": {
+     "expr": "ENTRY_PRICE + 1.0 * SOL_A"
+    }
+   }
+  },
+  {
+   "name": "S_SOL",
+   "asset": "SOLUSD",
+   "side": "sell",
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 1
+  },
+  {
+   "name": "B_LINK",
+   "asset": "LINKUSD",
+   "side": "buy",
+   "accumulate": false,
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 0.2375,
+   "protection": {
+    "protection": "tp_oco_sl",
+    "evaluation": "on_entry_fill",
+    "stop_loss": {
+     "expr": "ENTRY_PRICE - 1.5 * LINK_A"
+    },
+    "take_profit": {
+     "expr": "ENTRY_PRICE + 1.0 * LINK_A"
+    }
+   }
+  },
+  {
+   "name": "S_LINK",
+   "asset": "LINKUSD",
+   "side": "sell",
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 1
+  },
+  {
+   "name": "B_AVAX",
+   "asset": "AVAXUSD",
+   "side": "buy",
+   "accumulate": false,
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 0.2375,
+   "protection": {
+    "protection": "tp_oco_sl",
+    "evaluation": "on_entry_fill",
+    "stop_loss": {
+     "expr": "ENTRY_PRICE - 1.5 * AVAX_A"
+    },
+    "take_profit": {
+     "expr": "ENTRY_PRICE + 1.0 * AVAX_A"
+    }
+   }
+  },
+  {
+   "name": "S_AVAX",
+   "asset": "AVAXUSD",
+   "side": "sell",
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 1
+  },
+  {
+   "name": "B_DOGE",
+   "asset": "DOGEUSD",
+   "side": "buy",
+   "accumulate": false,
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 0.2375,
+   "protection": {
+    "protection": "tp_oco_sl",
+    "evaluation": "on_entry_fill",
+    "stop_loss": {
+     "expr": "ENTRY_PRICE - 1.5 * DOGE_A"
+    },
+    "take_profit": {
+     "expr": "ENTRY_PRICE + 1.0 * DOGE_A"
+    }
+   }
+  },
+  {
+   "name": "S_DOGE",
+   "asset": "DOGEUSD",
+   "side": "sell",
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 1
+  }
+ ],
+ "rules": [
+  {
+   "name": "SOLi",
+   "condition": "SOL_IN",
+   "actions": [
+    "B_SOL"
+   ]
+  },
+  {
+   "name": "SOLo",
+   "condition": "SOL_OUT",
+   "actions": [
+    "S_SOL"
+   ]
+  },
+  {
+   "name": "LINKi",
+   "condition": "LINK_IN",
+   "actions": [
+    "B_LINK"
+   ]
+  },
+  {
+   "name": "LINKo",
+   "condition": "LINK_OUT",
+   "actions": [
+    "S_LINK"
+   ]
+  },
+  {
+   "name": "AVAXi",
+   "condition": "AVAX_IN",
+   "actions": [
+    "B_AVAX"
+   ]
+  },
+  {
+   "name": "AVAXo",
+   "condition": "AVAX_OUT",
+   "actions": [
+    "S_AVAX"
+   ]
+  },
+  {
+   "name": "DOGEi",
+   "condition": "DOGE_IN",
+   "actions": [
+    "B_DOGE"
+   ]
+  },
+  {
+   "name": "DOGEo",
+   "condition": "DOGE_OUT",
+   "actions": [
+    "S_DOGE"
+   ]
+  }
+ ],
+ "name": "HV-D"
+}

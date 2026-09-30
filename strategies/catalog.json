@@ -1,0 +1,93 @@
+{
+  "_about": "Every strategy tested in this project. status: live | working | retired | failed. Rebuild any 'multi_coin' family entry into a full Astral strategy spec with: python3 tools/build_spec.py <key>. Backtest numbers are zero-cost unless costs_bps is given. Live numbers are Astral Paper (zero fees).",
+  "coin_sets": {
+    "c10": ["BTC", "ETH", "SOL", "LINK", "AVAX", "DOGE", "XRP", "ADA", "LTC", "DOT"],
+    "c15": ["BTC", "ETH", "SOL", "LINK", "AVAX", "DOGE", "XRP", "ADA", "LTC", "DOT", "BCH", "UNI", "ATOM", "NEAR", "AAVE"],
+    "c4_vol": ["SOL", "LINK", "AVAX", "DOGE"],
+    "c4_major": ["SOL", "LINK", "ETH", "BTC"],
+    "c2": ["SOL", "LINK"]
+  },
+  "strategies": {
+    "HV-G2": {
+      "status": "live", "accounts": ["Paper try 1 (saved 5927)", "Paper2 (saved 5928)"],
+      "family": "rsi2", "bar": "1m", "coins": "c15", "size": 0.10,
+      "entry": {"ema": 50, "rsi2_below": 20}, "exit": {"rsi2_above": 60, "max_bars": 2}, "tp_atr": 0.5, "sl_atr": 1.5,
+      "backtest": "HV-G (6.5%/coin) 2026-09-18..28: 8,607 trades (~33/hr), 60.2% WR, +1.6%, DD -1.2%",
+      "live": "HV-G at 6.5%: 92 trades per account, 68-70% WR, +$13 (10k acct) / +$124 (100k acct), ~29/hr"
+    },
+    "HV-E2": {
+      "status": "live", "accounts": ["Paper4 (saved 5926)"],
+      "family": "rsi2", "bar": "1m", "coins": "c10", "size": 0.18,
+      "entry": {"ema": 50, "rsi2_below": 10}, "exit": {"rsi2_above": 70, "max_bars": 3}, "tp_atr": 0.6, "sl_atr": 1.5,
+      "backtest": "HV-E (9.5%/coin) 2026-09-02..28: 5,078 trades (~7.8/hr), 62.0% WR, +5.7%, DD -1.1%",
+      "live": "HV-E at 9.5%: 30 trades, 80% WR, +$177, ~6.6/hr"
+    },
+    "HV-F3": {
+      "status": "live", "accounts": ["Paper5 (saved 5925)"],
+      "family": "bollinger", "bar": "1m", "coins": "c15", "size": 0.065,
+      "entry": {"ema": 100, "bb_len": 20, "bb_sd": 1.5}, "exit": {"bb_mid": true, "max_bars": 5}, "tp_atr": 0.5, "sl_atr": 2.0,
+      "backtest": "2026-09-18..28: 2,519 trades (~9.5/hr), 66.7% WR, +0.02% (flat)",
+      "live": "just started"
+    },
+    "HV-F2": {
+      "status": "retired", "reason": "only ~3 trades/hr live (<5/hr target) despite best win rate",
+      "family": "bollinger", "bar": "1m", "coins": "c10", "size": 0.095,
+      "entry": {"ema": 100, "bb_len": 20, "bb_sd": 1.5}, "exit": {"bb_mid": true, "max_bars": 5}, "tp_atr": 0.5, "sl_atr": 2.0,
+      "backtest": "2026-09-02..28: 4,170 trades (~6.4/hr), 66.0% WR, +5.4%, DD -1.8%",
+      "live": "13 trades, 85% WR, +$62, ~3.3/hr"
+    },
+    "HV-F": {
+      "status": "failed", "reason": "BB 2.0 sd too strict: ~2.3 trades/hr",
+      "family": "bollinger", "bar": "1m", "coins": "c10", "size": 0.095,
+      "entry": {"ema": 100, "bb_len": 20, "bb_sd": 2.0}, "exit": {"bb_mid": true, "max_bars": 5}, "tp_atr": 0.5, "sl_atr": 2.0,
+      "backtest": "1,487 trades (~2.3/hr), 65.0% WR, +1.8%"
+    },
+    "HV-D": {
+      "status": "live", "accounts": ["Paper3 (saved 5912)"],
+      "family": "meanrev_bb_rsi", "bar": "5m", "coins": "c4_vol", "size": 0.2375,
+      "entry": {"ema": 200, "bb_len": 20, "bb_sd": 2.0, "rsi2_below": 10}, "exit": {"bb_mid": true, "max_bars": 12}, "tp_atr": 1.0, "sl_atr": 1.5,
+      "backtest": "2026-05-15..09-28: 856 trades, 67.2% WR, +13.8%, DD -1.9%",
+      "live": "3 trades, 100% WR, +$257 (<1 trade/hr)"
+    },
+    "HV-A": {
+      "status": "retired", "reason": "too few trades (<1/hr); superseded by 1m designs",
+      "family": "meanrev_bb_rsi", "bar": "5m", "coins": "c2", "size": 0.475,
+      "entry": {"ema": 200, "bb_len": 20, "bb_sd": 2.0, "rsi2_below": 10}, "exit": {"bb_mid": true, "max_bars": 12}, "tp_atr": 1.0, "sl_atr": 1.5,
+      "backtest": "461 trades, 67.9% WR, +16.1%, DD -2.4%"
+    },
+    "HV-B": {
+      "status": "retired", "reason": "too few trades; superseded by HV-G",
+      "family": "zscore", "bar": "5m", "coins": "c4_major", "size": 0.2375,
+      "entry": {"ema": 100, "z_len": 20, "z_below": -2}, "exit": {"max_bars": 6}, "tp_atr": 0.5, "sl_atr": 2.0,
+      "backtest": "697 trades, 66.3% WR, +5.4%, DD -0.8%"
+    },
+    "HV-C": {
+      "status": "failed", "reason": "trend-following at 5m loses even with zero costs",
+      "family": "trend_pullback", "bar": "5m", "coins": "c2", "size": 0.475,
+      "rules": "EMA9>EMA21>EMA50; low<=EMA21 and close>EMA21, bullish candle, RSI14>45; exit 12 bars or EMA9<EMA50; TP +0.75 ATR SL -1.5 ATR",
+      "backtest": "1,990 trades, 58.1% WR, -20.3%"
+    },
+    "HV-G_v0": {"status": "superseded", "note": "HV-G at 6.5%/coin (saved 5917/5918) -> resized to HV-G2 10%"},
+    "HV-E_v0": {"status": "superseded", "note": "HV-E at 9.5%/coin (saved 5913) -> resized to HV-E2 18%"},
+
+    "MR1h-v2-SOL": {
+      "status": "working (not live)", "note": "ONLY design profitable with realistic exchange costs",
+      "bar": "1h", "coins": ["SOL"],
+      "rules": "close>EMA200 & close<BB_L(20,2) & RSI2<5; exit close>=BB mid or 24 bars; SL -2.5 ATR; size 50-95%",
+      "backtest": "2023-01..2026-09 with 5+5 bps costs: 129 trades, 65.9% WR, +18.6% (50% size) / +35.6% (95% size); both halves positive; 4h version 61% WR +14.9%"
+    },
+    "MR1h-v2-LINK": {"status": "working (not live)", "bar": "1h", "coins": ["LINK"], "rules": "same as MR1h-v2-SOL", "backtest": "114 trades, 59.6% WR, +17.1% (50%) / +32.1% (95%) after costs"},
+    "MR1h-v2-combo": {"status": "working (not live)", "bar": "1h", "coins": ["SOL", "LINK"], "rules": "MR1h-v2 on both, 47.5% each", "backtest": "243 trades, 63.0% WR, +36.4%, DD -13.5% after costs"},
+    "MR1h-v5-quickTP": {"status": "failed", "reason": "71-73% WR but ~1/3 of v2 profit", "rules": "v2 + TP +0.75 ATR", "backtest": "SOL 134 trades 73.1% WR +16.4%; 2025-26 only +1.5%"},
+    "MR1h-v4-bounce": {"status": "failed", "reason": "buying after the bounce loses the edge", "backtest": "119 trades, 64.7% WR, -17.7%, DD -44%"},
+    "MR1h-v2-other-coins": {"status": "failed", "reason": "BTC/ETH/AVAX/DOGE/XRP: 53-59% WR, flat to -20% after costs"},
+
+    "Breakout-A": {"status": "failed", "bar": "15m", "coins": ["SOL"], "rules": "EMA9>21 + close>20-bar high + 1.5x volume + RSI 50-68; 2R target", "backtest": "288 trades, 33.7% WR, -42% (10+10 bps)"},
+    "Breakout-B": {"status": "failed", "bar": "15m", "coins": ["SOL"], "rules": "A + 1h trend filter (EMA36/84 on 15m)", "backtest": "37 trades, 35% WR, -8% (costs); -1% zero-cost"},
+    "Breakout-C": {"status": "failed", "bar": "15m", "coins": ["SOL"], "rules": "B but enter on retest within 4 bars", "backtest": "24 trades, 45.8% WR, -3.3%"},
+    "Breakout-C-4hEMA50": {"status": "failed", "reason": "no out-of-sample improvement; RSI filter redundant", "backtest": "5 trades per 8 months"},
+    "LINK-momentum-5m-15m": {"status": "failed", "rules": "close>20-bar high + 1.5x volume, EMA50>EMA200 rising; TP +3 ATR SL -1.5 ATR", "backtest": "34-36% WR; +0.6..+9% zero-cost, -21..-26% with costs"},
+    "SOL-MR-1m-single-coin": {"status": "failed", "backtest": "54 trades in Sep, 13% WR, -5.2%"},
+    "SOL-MR-15m-30m-with-costs": {"status": "failed", "backtest": "54-59% WR, -6% to -16% after 5+5 bps"}
+  }
+}

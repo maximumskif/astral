@@ -1,0 +1,684 @@
+{
+ "bar_size": "1m",
+ "assets": [
+  {
+   "symbol": "BTCUSD",
+   "type": "crypto"
+  },
+  {
+   "symbol": "ETHUSD",
+   "type": "crypto"
+  },
+  {
+   "symbol": "SOLUSD",
+   "type": "crypto"
+  },
+  {
+   "symbol": "LINKUSD",
+   "type": "crypto"
+  },
+  {
+   "symbol": "AVAXUSD",
+   "type": "crypto"
+  },
+  {
+   "symbol": "DOGEUSD",
+   "type": "crypto"
+  },
+  {
+   "symbol": "XRPUSD",
+   "type": "crypto"
+  },
+  {
+   "symbol": "ADAUSD",
+   "type": "crypto"
+  },
+  {
+   "symbol": "LTCUSD",
+   "type": "crypto"
+  },
+  {
+   "symbol": "DOTUSD",
+   "type": "crypto"
+  }
+ ],
+ "series": [
+  {
+   "alias": "BTC_A",
+   "expr": "ATR(BTCUSD.high, BTCUSD.low, BTCUSD.close, 14)"
+  },
+  {
+   "alias": "BTC_E",
+   "expr": "EMA(BTCUSD.close, 50)"
+  },
+  {
+   "alias": "BTC_R",
+   "expr": "RSI(BTCUSD.close, 2)"
+  },
+  {
+   "alias": "BTC_N",
+   "expr": "BTCUSD.close > BTC_E and BTC_R < 10"
+  },
+  {
+   "alias": "ETH_A",
+   "expr": "ATR(ETHUSD.high, ETHUSD.low, ETHUSD.close, 14)"
+  },
+  {
+   "alias": "ETH_E",
+   "expr": "EMA(ETHUSD.close, 50)"
+  },
+  {
+   "alias": "ETH_R",
+   "expr": "RSI(ETHUSD.close, 2)"
+  },
+  {
+   "alias": "ETH_N",
+   "expr": "ETHUSD.close > ETH_E and ETH_R < 10"
+  },
+  {
+   "alias": "SOL_A",
+   "expr": "ATR(SOLUSD.high, SOLUSD.low, SOLUSD.close, 14)"
+  },
+  {
+   "alias": "SOL_E",
+   "expr": "EMA(SOLUSD.close, 50)"
+  },
+  {
+   "alias": "SOL_R",
+   "expr": "RSI(SOLUSD.close, 2)"
+  },
+  {
+   "alias": "SOL_N",
+   "expr": "SOLUSD.close > SOL_E and SOL_R < 10"
+  },
+  {
+   "alias": "LINK_A",
+   "expr": "ATR(LINKUSD.high, LINKUSD.low, LINKUSD.close, 14)"
+  },
+  {
+   "alias": "LINK_E",
+   "expr": "EMA(LINKUSD.close, 50)"
+  },
+  {
+   "alias": "LINK_R",
+   "expr": "RSI(LINKUSD.close, 2)"
+  },
+  {
+   "alias": "LINK_N",
+   "expr": "LINKUSD.close > LINK_E and LINK_R < 10"
+  },
+  {
+   "alias": "AVAX_A",
+   "expr": "ATR(AVAXUSD.high, AVAXUSD.low, AVAXUSD.close, 14)"
+  },
+  {
+   "alias": "AVAX_E",
+   "expr": "EMA(AVAXUSD.close, 50)"
+  },
+  {
+   "alias": "AVAX_R",
+   "expr": "RSI(AVAXUSD.close, 2)"
+  },
+  {
+   "alias": "AVAX_N",
+   "expr": "AVAXUSD.close > AVAX_E and AVAX_R < 10"
+  },
+  {
+   "alias": "DOGE_A",
+   "expr": "ATR(DOGEUSD.high, DOGEUSD.low, DOGEUSD.close, 14)"
+  },
+  {
+   "alias": "DOGE_E",
+   "expr": "EMA(DOGEUSD.close, 50)"
+  },
+  {
+   "alias": "DOGE_R",
+   "expr": "RSI(DOGEUSD.close, 2)"
+  },
+  {
+   "alias": "DOGE_N",
+   "expr": "DOGEUSD.close > DOGE_E and DOGE_R < 10"
+  },
+  {
+   "alias": "XRP_A",
+   "expr": "ATR(XRPUSD.high, XRPUSD.low, XRPUSD.close, 14)"
+  },
+  {
+   "alias": "XRP_E",
+   "expr": "EMA(XRPUSD.close, 50)"
+  },
+  {
+   "alias": "XRP_R",
+   "expr": "RSI(XRPUSD.close, 2)"
+  },
+  {
+   "alias": "XRP_N",
+   "expr": "XRPUSD.close > XRP_E and XRP_R < 10"
+  },
+  {
+   "alias": "ADA_A",
+   "expr": "ATR(ADAUSD.high, ADAUSD.low, ADAUSD.close, 14)"
+  },
+  {
+   "alias": "ADA_E",
+   "expr": "EMA(ADAUSD.close, 50)"
+  },
+  {
+   "alias": "ADA_R",
+   "expr": "RSI(ADAUSD.close, 2)"
+  },
+  {
+   "alias": "ADA_N",
+   "expr": "ADAUSD.close > ADA_E and ADA_R < 10"
+  },
+  {
+   "alias": "LTC_A",
+   "expr": "ATR(LTCUSD.high, LTCUSD.low, LTCUSD.close, 14)"
+  },
+  {
+   "alias": "LTC_E",
+   "expr": "EMA(LTCUSD.close, 50)"
+  },
+  {
+   "alias": "LTC_R",
+   "expr": "RSI(LTCUSD.close, 2)"
+  },
+  {
+   "alias": "LTC_N",
+   "expr": "LTCUSD.close > LTC_E and LTC_R < 10"
+  },
+  {
+   "alias": "DOT_A",
+   "expr": "ATR(DOTUSD.high, DOTUSD.low, DOTUSD.close, 14)"
+  },
+  {
+   "alias": "DOT_E",
+   "expr": "EMA(DOTUSD.close, 50)"
+  },
+  {
+   "alias": "DOT_R",
+   "expr": "RSI(DOTUSD.close, 2)"
+  },
+  {
+   "alias": "DOT_N",
+   "expr": "DOTUSD.close > DOT_E and DOT_R < 10"
+  }
+ ],
+ "signals": [
+  {
+   "name": "BTC_IN",
+   "expr": "BTC_N"
+  },
+  {
+   "name": "BTC_OUT",
+   "expr": "BTC_R > 70 or BARS_SINCE(BTC_N) == 3"
+  },
+  {
+   "name": "ETH_IN",
+   "expr": "ETH_N"
+  },
+  {
+   "name": "ETH_OUT",
+   "expr": "ETH_R > 70 or BARS_SINCE(ETH_N) == 3"
+  },
+  {
+   "name": "SOL_IN",
+   "expr": "SOL_N"
+  },
+  {
+   "name": "SOL_OUT",
+   "expr": "SOL_R > 70 or BARS_SINCE(SOL_N) == 3"
+  },
+  {
+   "name": "LINK_IN",
+   "expr": "LINK_N"
+  },
+  {
+   "name": "LINK_OUT",
+   "expr": "LINK_R > 70 or BARS_SINCE(LINK_N) == 3"
+  },
+  {
+   "name": "AVAX_IN",
+   "expr": "AVAX_N"
+  },
+  {
+   "name": "AVAX_OUT",
+   "expr": "AVAX_R > 70 or BARS_SINCE(AVAX_N) == 3"
+  },
+  {
+   "name": "DOGE_IN",
+   "expr": "DOGE_N"
+  },
+  {
+   "name": "DOGE_OUT",
+   "expr": "DOGE_R > 70 or BARS_SINCE(DOGE_N) == 3"
+  },
+  {
+   "name": "XRP_IN",
+   "expr": "XRP_N"
+  },
+  {
+   "name": "XRP_OUT",
+   "expr": "XRP_R > 70 or BARS_SINCE(XRP_N) == 3"
+  },
+  {
+   "name": "ADA_IN",
+   "expr": "ADA_N"
+  },
+  {
+   "name": "ADA_OUT",
+   "expr": "ADA_R > 70 or BARS_SINCE(ADA_N) == 3"
+  },
+  {
+   "name": "LTC_IN",
+   "expr": "LTC_N"
+  },
+  {
+   "name": "LTC_OUT",
+   "expr": "LTC_R > 70 or BARS_SINCE(LTC_N) == 3"
+  },
+  {
+   "name": "DOT_IN",
+   "expr": "DOT_N"
+  },
+  {
+   "name": "DOT_OUT",
+   "expr": "DOT_R > 70 or BARS_SINCE(DOT_N) == 3"
+  }
+ ],
+ "orders": [
+  {
+   "name": "B_BTC",
+   "asset": "BTCUSD",
+   "side": "buy",
+   "accumulate": false,
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 0.18,
+   "protection": {
+    "protection": "tp_oco_sl",
+    "evaluation": "on_entry_fill",
+    "stop_loss": {
+     "expr": "ENTRY_PRICE - 1.5 * BTC_A"
+    },
+    "take_profit": {
+     "expr": "ENTRY_PRICE + 0.6 * BTC_A"
+    }
+   }
+  },
+  {
+   "name": "S_BTC",
+   "asset": "BTCUSD",
+   "side": "sell",
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 1
+  },
+  {
+   "name": "B_ETH",
+   "asset": "ETHUSD",
+   "side": "buy",
+   "accumulate": false,
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 0.18,
+   "protection": {
+    "protection": "tp_oco_sl",
+    "evaluation": "on_entry_fill",
+    "stop_loss": {
+     "expr": "ENTRY_PRICE - 1.5 * ETH_A"
+    },
+    "take_profit": {
+     "expr": "ENTRY_PRICE + 0.6 * ETH_A"
+    }
+   }
+  },
+  {
+   "name": "S_ETH",
+   "asset": "ETHUSD",
+   "side": "sell",
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 1
+  },
+  {
+   "name": "B_SOL",
+   "asset": "SOLUSD",
+   "side": "buy",
+   "accumulate": false,
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 0.18,
+   "protection": {
+    "protection": "tp_oco_sl",
+    "evaluation": "on_entry_fill",
+    "stop_loss": {
+     "expr": "ENTRY_PRICE - 1.5 * SOL_A"
+    },
+    "take_profit": {
+     "expr": "ENTRY_PRICE + 0.6 * SOL_A"
+    }
+   }
+  },
+  {
+   "name": "S_SOL",
+   "asset": "SOLUSD",
+   "side": "sell",
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 1
+  },
+  {
+   "name": "B_LINK",
+   "asset": "LINKUSD",
+   "side": "buy",
+   "accumulate": false,
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 0.18,
+   "protection": {
+    "protection": "tp_oco_sl",
+    "evaluation": "on_entry_fill",
+    "stop_loss": {
+     "expr": "ENTRY_PRICE - 1.5 * LINK_A"
+    },
+    "take_profit": {
+     "expr": "ENTRY_PRICE + 0.6 * LINK_A"
+    }
+   }
+  },
+  {
+   "name": "S_LINK",
+   "asset": "LINKUSD",
+   "side": "sell",
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 1
+  },
+  {
+   "name": "B_AVAX",
+   "asset": "AVAXUSD",
+   "side": "buy",
+   "accumulate": false,
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 0.18,
+   "protection": {
+    "protection": "tp_oco_sl",
+    "evaluation": "on_entry_fill",
+    "stop_loss": {
+     "expr": "ENTRY_PRICE - 1.5 * AVAX_A"
+    },
+    "take_profit": {
+     "expr": "ENTRY_PRICE + 0.6 * AVAX_A"
+    }
+   }
+  },
+  {
+   "name": "S_AVAX",
+   "asset": "AVAXUSD",
+   "side": "sell",
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 1
+  },
+  {
+   "name": "B_DOGE",
+   "asset": "DOGEUSD",
+   "side": "buy",
+   "accumulate": false,
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 0.18,
+   "protection": {
+    "protection": "tp_oco_sl",
+    "evaluation": "on_entry_fill",
+    "stop_loss": {
+     "expr": "ENTRY_PRICE - 1.5 * DOGE_A"
+    },
+    "take_profit": {
+     "expr": "ENTRY_PRICE + 0.6 * DOGE_A"
+    }
+   }
+  },
+  {
+   "name": "S_DOGE",
+   "asset": "DOGEUSD",
+   "side": "sell",
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 1
+  },
+  {
+   "name": "B_XRP",
+   "asset": "XRPUSD",
+   "side": "buy",
+   "accumulate": false,
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 0.18,
+   "protection": {
+    "protection": "tp_oco_sl",
+    "evaluation": "on_entry_fill",
+    "stop_loss": {
+     "expr": "ENTRY_PRICE - 1.5 * XRP_A"
+    },
+    "take_profit": {
+     "expr": "ENTRY_PRICE + 0.6 * XRP_A"
+    }
+   }
+  },
+  {
+   "name": "S_XRP",
+   "asset": "XRPUSD",
+   "side": "sell",
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 1
+  },
+  {
+   "name": "B_ADA",
+   "asset": "ADAUSD",
+   "side": "buy",
+   "accumulate": false,
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 0.18,
+   "protection": {
+    "protection": "tp_oco_sl",
+    "evaluation": "on_entry_fill",
+    "stop_loss": {
+     "expr": "ENTRY_PRICE - 1.5 * ADA_A"
+    },
+    "take_profit": {
+     "expr": "ENTRY_PRICE + 0.6 * ADA_A"
+    }
+   }
+  },
+  {
+   "name": "S_ADA",
+   "asset": "ADAUSD",
+   "side": "sell",
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 1
+  },
+  {
+   "name": "B_LTC",
+   "asset": "LTCUSD",
+   "side": "buy",
+   "accumulate": false,
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 0.18,
+   "protection": {
+    "protection": "tp_oco_sl",
+    "evaluation": "on_entry_fill",
+    "stop_loss": {
+     "expr": "ENTRY_PRICE - 1.5 * LTC_A"
+    },
+    "take_profit": {
+     "expr": "ENTRY_PRICE + 0.6 * LTC_A"
+    }
+   }
+  },
+  {
+   "name": "S_LTC",
+   "asset": "LTCUSD",
+   "side": "sell",
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 1
+  },
+  {
+   "name": "B_DOT",
+   "asset": "DOTUSD",
+   "side": "buy",
+   "accumulate": false,
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 0.18,
+   "protection": {
+    "protection": "tp_oco_sl",
+    "evaluation": "on_entry_fill",
+    "stop_loss": {
+     "expr": "ENTRY_PRICE - 1.5 * DOT_A"
+    },
+    "take_profit": {
+     "expr": "ENTRY_PRICE + 0.6 * DOT_A"
+    }
+   }
+  },
+  {
+   "name": "S_DOT",
+   "asset": "DOTUSD",
+   "side": "sell",
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 1
+  }
+ ],
+ "rules": [
+  {
+   "name": "BTCi",
+   "condition": "BTC_IN",
+   "actions": [
+    "B_BTC"
+   ]
+  },
+  {
+   "name": "BTCo",
+   "condition": "BTC_OUT",
+   "actions": [
+    "S_BTC"
+   ]
+  },
+  {
+   "name": "ETHi",
+   "condition": "ETH_IN",
+   "actions": [
+    "B_ETH"
+   ]
+  },
+  {
+   "name": "ETHo",
+   "condition": "ETH_OUT",
+   "actions": [
+    "S_ETH"
+   ]
+  },
+  {
+   "name": "SOLi",
+   "condition": "SOL_IN",
+   "actions": [
+    "B_SOL"
+   ]
+  },
+  {
+   "name": "SOLo",
+   "condition": "SOL_OUT",
+   "actions": [
+    "S_SOL"
+   ]
+  },
+  {
+   "name": "LINKi",
+   "condition": "LINK_IN",
+   "actions": [
+    "B_LINK"
+   ]
+  },
+  {
+   "name": "LINKo",
+   "condition": "LINK_OUT",
+   "actions": [
+    "S_LINK"
+   ]
+  },
+  {
+   "name": "AVAXi",
+   "condition": "AVAX_IN",
+   "actions": [
+    "B_AVAX"
+   ]
+  },
+  {
+   "name": "AVAXo",
+   "condition": "AVAX_OUT",
+   "actions": [
+    "S_AVAX"
+   ]
+  },
+  {
+   "name": "DOGEi",
+   "condition": "DOGE_IN",
+   "actions": [
+    "B_DOGE"
+   ]
+  },
+  {
+   "name": "DOGEo",
+   "condition": "DOGE_OUT",
+   "actions": [
+    "S_DOGE"
+   ]
+  },
+  {
+   "name": "XRPi",
+   "condition": "XRP_IN",
+   "actions": [
+    "B_XRP"
+   ]
+  },
+  {
+   "name": "XRPo",
+   "condition": "XRP_OUT",
+   "actions": [
+    "S_XRP"
+   ]
+  },
+  {
+   "name": "ADAi",
+   "condition": "ADA_IN",
+   "actions": [
+    "B_ADA"
+   ]
+  },
+  {
+   "name": "ADAo",
+   "condition": "ADA_OUT",
+   "actions": [
+    "S_ADA"
+   ]
+  },
+  {
+   "name": "LTCi",
+   "condition": "LTC_IN",
+   "actions": [
+    "B_LTC"
+   ]
+  },
+  {
+   "name": "LTCo",
+   "condition": "LTC_OUT",
+   "actions": [
+    "S_LTC"
+   ]
+  },
+  {
+   "name": "DOTi",
+   "condition": "DOT_IN",
+   "actions": [
+    "B_DOT"
+   ]
+  },
+  {
+   "name": "DOTo",
+   "condition": "DOT_OUT",
+   "actions": [
+    "S_DOT"
+   ]
+  }
+ ],
+ "name": "HV-E2"
+}

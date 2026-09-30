@@ -1,0 +1,282 @@
+{
+ "bar_size": "5m",
+ "assets": [
+  {
+   "symbol": "SOLUSD",
+   "type": "crypto"
+  },
+  {
+   "symbol": "LINKUSD",
+   "type": "crypto"
+  },
+  {
+   "symbol": "ETHUSD",
+   "type": "crypto"
+  },
+  {
+   "symbol": "BTCUSD",
+   "type": "crypto"
+  }
+ ],
+ "series": [
+  {
+   "alias": "SOL_A",
+   "expr": "ATR(SOLUSD.high, SOLUSD.low, SOLUSD.close, 14)"
+  },
+  {
+   "alias": "SOL_E",
+   "expr": "EMA(SOLUSD.close, 100)"
+  },
+  {
+   "alias": "SOL_Z",
+   "expr": "ZSCORE(SOLUSD.close, 20)"
+  },
+  {
+   "alias": "SOL_N",
+   "expr": "SOLUSD.close > SOL_E and SOL_Z < -2"
+  },
+  {
+   "alias": "LINK_A",
+   "expr": "ATR(LINKUSD.high, LINKUSD.low, LINKUSD.close, 14)"
+  },
+  {
+   "alias": "LINK_E",
+   "expr": "EMA(LINKUSD.close, 100)"
+  },
+  {
+   "alias": "LINK_Z",
+   "expr": "ZSCORE(LINKUSD.close, 20)"
+  },
+  {
+   "alias": "LINK_N",
+   "expr": "LINKUSD.close > LINK_E and LINK_Z < -2"
+  },
+  {
+   "alias": "ETH_A",
+   "expr": "ATR(ETHUSD.high, ETHUSD.low, ETHUSD.close, 14)"
+  },
+  {
+   "alias": "ETH_E",
+   "expr": "EMA(ETHUSD.close, 100)"
+  },
+  {
+   "alias": "ETH_Z",
+   "expr": "ZSCORE(ETHUSD.close, 20)"
+  },
+  {
+   "alias": "ETH_N",
+   "expr": "ETHUSD.close > ETH_E and ETH_Z < -2"
+  },
+  {
+   "alias": "BTC_A",
+   "expr": "ATR(BTCUSD.high, BTCUSD.low, BTCUSD.close, 14)"
+  },
+  {
+   "alias": "BTC_E",
+   "expr": "EMA(BTCUSD.close, 100)"
+  },
+  {
+   "alias": "BTC_Z",
+   "expr": "ZSCORE(BTCUSD.close, 20)"
+  },
+  {
+   "alias": "BTC_N",
+   "expr": "BTCUSD.close > BTC_E and BTC_Z < -2"
+  }
+ ],
+ "signals": [
+  {
+   "name": "SOL_IN",
+   "expr": "SOL_N"
+  },
+  {
+   "name": "SOL_OUT",
+   "expr": "BARS_SINCE(SOL_N) == 6"
+  },
+  {
+   "name": "LINK_IN",
+   "expr": "LINK_N"
+  },
+  {
+   "name": "LINK_OUT",
+   "expr": "BARS_SINCE(LINK_N) == 6"
+  },
+  {
+   "name": "ETH_IN",
+   "expr": "ETH_N"
+  },
+  {
+   "name": "ETH_OUT",
+   "expr": "BARS_SINCE(ETH_N) == 6"
+  },
+  {
+   "name": "BTC_IN",
+   "expr": "BTC_N"
+  },
+  {
+   "name": "BTC_OUT",
+   "expr": "BARS_SINCE(BTC_N) == 6"
+  }
+ ],
+ "orders": [
+  {
+   "name": "B_SOL",
+   "asset": "SOLUSD",
+   "side": "buy",
+   "accumulate": false,
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 0.2375,
+   "protection": {
+    "protection": "tp_oco_sl",
+    "evaluation": "on_entry_fill",
+    "stop_loss": {
+     "expr": "ENTRY_PRICE - 2.0 * SOL_A"
+    },
+    "take_profit": {
+     "expr": "ENTRY_PRICE + 0.5 * SOL_A"
+    }
+   }
+  },
+  {
+   "name": "S_SOL",
+   "asset": "SOLUSD",
+   "side": "sell",
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 1
+  },
+  {
+   "name": "B_LINK",
+   "asset": "LINKUSD",
+   "side": "buy",
+   "accumulate": false,
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 0.2375,
+   "protection": {
+    "protection": "tp_oco_sl",
+    "evaluation": "on_entry_fill",
+    "stop_loss": {
+     "expr": "ENTRY_PRICE - 2.0 * LINK_A"
+    },
+    "take_profit": {
+     "expr": "ENTRY_PRICE + 0.5 * LINK_A"
+    }
+   }
+  },
+  {
+   "name": "S_LINK",
+   "asset": "LINKUSD",
+   "side": "sell",
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 1
+  },
+  {
+   "name": "B_ETH",
+   "asset": "ETHUSD",
+   "side": "buy",
+   "accumulate": false,
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 0.2375,
+   "protection": {
+    "protection": "tp_oco_sl",
+    "evaluation": "on_entry_fill",
+    "stop_loss": {
+     "expr": "ENTRY_PRICE - 2.0 * ETH_A"
+    },
+    "take_profit": {
+     "expr": "ENTRY_PRICE + 0.5 * ETH_A"
+    }
+   }
+  },
+  {
+   "name": "S_ETH",
+   "asset": "ETHUSD",
+   "side": "sell",
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 1
+  },
+  {
+   "name": "B_BTC",
+   "asset": "BTCUSD",
+   "side": "buy",
+   "accumulate": false,
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 0.2375,
+   "protection": {
+    "protection": "tp_oco_sl",
+    "evaluation": "on_entry_fill",
+    "stop_loss": {
+     "expr": "ENTRY_PRICE - 2.0 * BTC_A"
+    },
+    "take_profit": {
+     "expr": "ENTRY_PRICE + 0.5 * BTC_A"
+    }
+   }
+  },
+  {
+   "name": "S_BTC",
+   "asset": "BTCUSD",
+   "side": "sell",
+   "sizing_type": "percent_of_equity",
+   "sizing_value": 1
+  }
+ ],
+ "rules": [
+  {
+   "name": "SOLi",
+   "condition": "SOL_IN",
+   "actions": [
+    "B_SOL"
+   ]
+  },
+  {
+   "name": "SOLo",
+   "condition": "SOL_OUT",
+   "actions": [
+    "S_SOL"
+   ]
+  },
+  {
+   "name": "LINKi",
+   "condition": "LINK_IN",
+   "actions": [
+    "B_LINK"
+   ]
+  },
+  {
+   "name": "LINKo",
+   "condition": "LINK_OUT",
+   "actions": [
+    "S_LINK"
+   ]
+  },
+  {
+   "name": "ETHi",
+   "condition": "ETH_IN",
+   "actions": [
+    "B_ETH"
+   ]
+  },
+  {
+   "name": "ETHo",
+   "condition": "ETH_OUT",
+   "actions": [
+    "S_ETH"
+   ]
+  },
+  {
+   "name": "BTCi",
+   "condition": "BTC_IN",
+   "actions": [
+    "B_BTC"
+   ]
+  },
+  {
+   "name": "BTCo",
+   "condition": "BTC_OUT",
+   "actions": [
+    "S_BTC"
+   ]
+  }
+ ],
+ "name": "HV-B"
+}
