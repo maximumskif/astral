@@ -40,6 +40,7 @@
 | **HV-F (Bollinger 2.0 sd)** | 1-min, 10 coins | 65% WR but only ~2.3 trades/hr | Band too strict → too few trades (1.5 sd fixed it) |
 | **v5 quick TP (1h)** | TP +0.75 ATR | 71–73% WR but ~1/3 the profit of v2 | Higher hit rate ≠ more money; exits winners too early |
 | **15-min/30-min mean reversion** (real costs) | SOL MR at 15m, 30m | 54–59% WR, −6% to −16% after costs | Costs still too big vs. move size below 1h |
+| **Cost-aware filters on 1m/5m** (from hmmm-zip review, 2026-09-30) | HV-G2 + ATR%>0.25% floor; HV-D + "BB-mid ≥0.6% / ≥1% away" edge floor, no TP | 1m: 24% WR −30% (baseline −79%). 5m edge≥1%: +2.2% May–Sep **but −6.8% on Jan–May holdout** | Filters cut losses a lot but no 1m/5m variant survives 0.2% round-trip costs out-of-sample. **Always check an untouched earlier period before deploying.** |
 
 ---
 

@@ -31,6 +31,12 @@ def build(cfg, coins):
         if fam == "zscore":
             S.append({"alias": f"{p}_Z", "expr": f"ZSCORE({s}.close, {e['z_len']})"})
             conds.append(f"{p}_Z < {e['z_below']}")
+        if "vol_min" in e:  # cost-aware floor: skip bars whose ATR is too small vs fees
+            conds.append(f"{p}_A / {s}.close > {e['vol_min']}")
+        if "vol_max" in e:
+            conds.append(f"{p}_A / {s}.close < {e['vol_max']}")
+        if "edge_min" in e:  # expected bounce to BB middle must beat costs
+            conds.append(f"({p}_M - {s}.close) / {s}.close > {e['edge_min']}")
         S.append({"alias": f"{p}_N", "expr": " and ".join(conds)})
         if "rsi2_above" in x:
             outs.append(f"{p}_R > {x['rsi2_above']}")
@@ -54,6 +60,9 @@ if __name__ == "__main__":
     cat = json.load(open(os.path.join(ROOT, "strategies", "catalog.json")))
     key = sys.argv[1]
     cfg = dict(cat["strategies"][key])
+    for flag in ("vol_min", "vol_max", "edge_min"):
+        if "--" + flag in sys.argv:
+            cfg["entry"] = dict(cfg["entry"], **{flag: float(sys.argv[sys.argv.index("--" + flag) + 1])})
     if "--size" in sys.argv:
         cfg["size"] = float(sys.argv[sys.argv.index("--size") + 1])
     coins = cat["coin_sets"][cfg["coins"]] if isinstance(cfg["coins"], str) else cfg["coins"]
